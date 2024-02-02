@@ -1,0 +1,23 @@
+title: Adam Gao
+description: Adam Gao's Portfolio
+theme: just-the-docs
+
+url: https://gaoadam.github.io
+
+# Build settings
+markdown: kramdown
+math: katex
+
+# Aux links for the upper right navigation
+aux_links:
+  "Github":
+    - "https://github.com/gaoadam/"
+  "Linkedin":
+    - "https://www.linkedin.com/in/adamjgao/"
+  "Bandcamp":
+    - "https://adamgao.bandcamp.com/"
+  "Youtube":
+    - "https://www.youtube.com/@adamgaosignals"
+
+# Makes Aux links open in a new tab. Default is false
+aux_links_new_tab: false
