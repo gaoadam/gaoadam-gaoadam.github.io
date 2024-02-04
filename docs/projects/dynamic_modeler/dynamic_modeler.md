@@ -81,4 +81,6 @@ Plugging this into my engine we get the following signal:
 
 Now that we've looked at an example, you may be wondering, **how do I use the engine to simulate my own nonlinear equation?**
 
-First 
+The engine revolves around one Python function that I call "iterate". All you need to do is pass the following items (i.e. arguments):
+
+*
