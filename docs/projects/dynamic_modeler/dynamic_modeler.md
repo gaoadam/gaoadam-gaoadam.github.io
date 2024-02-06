@@ -163,4 +163,42 @@ $$
 $$
 ![rlc](rlc.png)
 
-## Neural Network Predictions
+## Neural Networks
+
+Do the above examples have clearly discernable patterns? Yes!
+
+Do linear systems in general have clearly discenrable patterns? I think so.
+
+Do complex nonlinear systems have clearly discernable patterns? Sometimes. But that's another problem for another day.
+
+In any case, an Long Short-Term Memory (LSTM) Neural Network is often used to predict time series. **I train an LSTM Neural Network off the dynamical simulation signals and test it's ability to predict the rest of the signal.**
+
+### Neural Networks: Training Data
+
+Like my other LSTM prediction projects, I use a sort of windowing method to separate the data into neural network inputs and outputs (i.e. labels).
+
+**Code**
+
+```#Split data into multiple signals (inputs and labels) using a rolling window
+def create_dataset(data, n_window, n_predict):
+    #initialize data lists
+    data_x = []
+    data_y = []
+    #initialize data
+    for n in range(0, len(data)-n_window-n_predict):
+        
+        #Get training data
+        #Training Inputs
+        x = data[n:n+n_window]
+        #Training Labels
+        y = data[n+n_window:n+n_window+n_predict]
+        
+        #append training data and label to final format
+        data_x += [x]
+        data_y += [y]
+    #convert lists to array
+    data_x = np.array(data_x)
+    data_y = np.array(data_y)
+    return data_x, data_y
+
+```
