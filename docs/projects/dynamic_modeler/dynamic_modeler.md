@@ -175,6 +175,8 @@ In any case, an Long Short-Term Memory (LSTM) Neural Network is often used to pr
 
 ### Neural Networks: Training Data
 
+A neural network can't just be fed some raw signal. It must get proper inputs and outputs.
+
 Like my other LSTM prediction projects, I use a sort of windowing method to separate the data into neural network inputs and outputs (i.e. labels).
 
 **Code**
