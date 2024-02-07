@@ -179,6 +179,10 @@ A neural network can't just be fed some raw signal. It must get proper inputs an
 
 Like my other LSTM prediction projects, I use a sort of windowing method to separate the data into neural network inputs and outputs (i.e. labels).
 
+Each “input” window from “n” to “n + n_window” gets a subsequent “output” label
+
+![training_data_diagram](training_data_diagram.png)
+
 **Code**
 
 ```#Split data into multiple signals (inputs and labels) using a rolling window
