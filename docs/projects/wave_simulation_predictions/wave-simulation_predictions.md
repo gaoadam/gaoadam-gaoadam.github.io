@@ -63,14 +63,15 @@ An LSTM model needs to train on an input and an output i.e. "label", not just so
 
 I apply overlapping windows throughout the signal to generate inputs and outputs.
 
-More specifically, each "input" window from "n" to "n + n_window" gets a subsequent "output" label from "n + n_window + 1" to "n + n_window + n_predict".
-
-If that's confusng, just know that we have a bunch of training inputs and outputs instead of one big signal now.
-
+In principle, each "input" window from "n" to "n + n_window" can a subsequent "output" label from "n + n_window + 1" to "n + n_window + n_predict".
 
 ![Training Data](training_data_diagram.png)
 
-*Figure 2: Iterating through input and ouput training data through a rolling window*
+*Figure 2: One possible method of iterating through input and ouput training data using a rolling window*
+
+***Actually, if you inspect my code you will find there is one more level to the windowing process so that the DataLoader can properly interact with the data: There is an output label for each point within an input window.***
+
+If that's confusing, just know that we have a bunch of training inputs and outputs instead of one big signal now.
 
 See code below:
 
