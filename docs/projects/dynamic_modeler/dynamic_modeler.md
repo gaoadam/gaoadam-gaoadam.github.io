@@ -1,12 +1,16 @@
-# Dynamical Systems and Neural Networks
+# Dynamical Systems, Neural Networks, and TensorFlow
+
+See [GitHub repo](https://github.com/gaoadam/dynamicmodel) for source code of the signal modeling process and neural network training.
 
 ## Introduction
 
-Systems in nature, finance, and engineering evolve over time in interesting ways. Such systems are called **dynamical systems**. They can also be quite complex and  unpredictable, though in some cases they can be approximated to some sum of predictable patterns. 
+You ever watch a high finance show and a big shot starts making hammy, Darwinian analogies comparing Wall Street to the jungle? 
+
+Systems in nature, finance, and engineering can all evolve over time in interesting ways. Such systems are called **dynamical systems**. They can also be quite complex and  unpredictable, though in some cases they can be approximated to some sum of predictable patterns. 
 
 Neural networks are able to pick up both simple and complex phenomena while using reasonably generalized training methods, provided they are tuned with some level of expertise.
 
-In this project I build a simulation library for generating signals from dynamical systems, and then predict them using LSTM (Long short term memory) neural networks.
+In this project I build a simulation library for generating signals from dynamical systems, and then predict them using LSTM (Long short term memory) neural networks in TensorFlow.
 
 ## Dynamical Systems: How do things change?
 
@@ -177,13 +181,14 @@ In any case, an Long Short-Term Memory (LSTM) Neural Network is often used to pr
 
 A neural network can't just be fed some raw signal. It must get proper inputs and outputs.
 
-Like my other LSTM prediction projects, I use a sort of windowing method to separate the data into neural network inputs and outputs (i.e. labels).
+Like my  [wave simulation prediction project](https://gaoadam.github.io/docs/projects/wave_simulation_predictions/wave-simulation_predictions.html), I use a sort of windowing method to separate the data into neural network inputs and outputs (i.e. labels).
 
-Each “input” window from “n” to “n + n_window” gets a subsequent “output” label
+Each “input” window from “n” to “n + n_window” gets a subsequent “output” label from "n + n_window" to "n + n_window + n_predict".
 
 ![training_data_diagram](training_data_diagram.png)
 
 **Code**
+Here I define a function to format signals into training data:
 
 ```#Split data into multiple signals (inputs and labels) using a rolling window
 def create_dataset(data, n_window, n_predict):
@@ -208,3 +213,75 @@ def create_dataset(data, n_window, n_predict):
     return data_x, data_y
 
 ```
+### Neural Networks: Training and Tensorflow
+
+I format the previously generated signals into training data and then create neural networks from Tensorflow to train off them.
+
+**Code**
+
+Open the previously generated signals from files:
+
+```
+#Configure save paths
+save_folder = "exports"
+save_path = "{}\\{}\\".format(str(Path.cwd()), save_folder)
+
+#Open signal data as DataFrames
+df1 = pd.read_csv(save_path + 'x_dampeddriven.csv')
+df2 = pd.read_csv(save_path + 'x_rlc.csv')
+```
+
+```
+#Determine length of training data
+len_train = 4000
+
+#Apply window function to prepare training data
+n_window=200
+n_predict=1
+#damped oscillator data
+x_train1, y_train1 = create_dataset(data=df1['x'].to_numpy()[0:len_train], n_window=n_window, n_predict=n_predict)
+#rlc circuit data
+x_train2, y_train2 = create_dataset(data=df2['capacitor voltage'].to_numpy()[0:len_train], n_window=n_window, n_predict=n_predict)
+
+#Reshape input to be [samples, time steps, features]
+x_train1 = np.expand_dims(x_train1, axis=1)
+x_train2 = np.expand_dims(x_train2, axis=1)
+```
+
+```
+def create_model(x_length, y_length):
+    """
+    Description: 
+        Create an LSTM model with specific parameters
+
+    Args:
+        x_length: int, length of training inputs
+        y_lenght: int, length of training outputs
+    """
+    model=tf.keras.models.Sequential()
+    model.add(tf.keras.layers.LSTM(units=n_predict, input_shape=(x_length, y_length)))
+    model.add(tf.keras.layers.Dense(1))
+    model.compile(loss='mean_squared_error', optimizer='adam')
+    return model
+
+```
+
+```
+#Determine model parameters
+x_length = 1
+epochs = 15
+batch_size = 1
+
+#Create neural networks as Tensorflow model objects
+model1 = create_model(x_length=x_length, y_length=n_window)
+model2 = create_model(x_length=x_length, y_length=n_window)
+#Train Model
+model1.fit(x_train1, y_train1, epochs=epochs, batch_size=batch_size, verbose=2)
+model2.fit(x_train2, y_train2, epochs=epochs, batch_size=batch_size, verbose=2)
+```
+
+### Neural Networks: Predictions
+
+![pred1](pred_damped_oscillator.png)
+
+![pred2](pred_rlc.png)
