@@ -215,21 +215,16 @@ def create_dataset(data, n_window, n_predict):
 ```
 ### Neural Networks: Training and Tensorflow
 
-I format the previously generated signals into training data and then create neural networks from Tensorflow to train off them.
+First I split the signals into training and test data. The test data comes after the training part of the signal, and is a hold out to compare to the neural network's predictions.
 
-**Code**
+After I format the "training" part of the signals, all that's left to do is to create neural networks that learn off the training data.
 
-Open the previously generated signals from files:
+This is relatively simple in Keras (in the TensorFlow platform). I create a neural network with one LSTM layer and optimize it using mean squared error.
 
-```
-#Configure save paths
-save_folder = "exports"
-save_path = "{}\\{}\\".format(str(Path.cwd()), save_folder)
+**Code:**
+***Note that these are just illustrative snippets of code. For entire context see repo.***
 
-#Open signal data as DataFrames
-df1 = pd.read_csv(save_path + 'x_dampeddriven.csv')
-df2 = pd.read_csv(save_path + 'x_rlc.csv')
-```
+Here the create_dataset function is deployed to prepare training data off of the Pandas DataFrames df1 and df2, which contain the previously generated signals:
 
 ```
 #Determine length of training data
@@ -247,6 +242,12 @@ x_train2, y_train2 = create_dataset(data=df2['capacitor voltage'].to_numpy()[0:l
 x_train1 = np.expand_dims(x_train1, axis=1)
 x_train2 = np.expand_dims(x_train2, axis=1)
 ```
+
+Here I define a simple function to create a neural network with one LSTM layer so that I don't have to repeatedly write the same 4 lines of code.
+
+That being said, TensorFlow's Keras interface is very simple.
+
+I only need to specify the input size and output size and call some functions to add layers.
 
 ```
 def create_model(x_length, y_length):
@@ -266,6 +267,8 @@ def create_model(x_length, y_length):
 
 ```
 
+Here I just create the neural networks and then train them off the training data.
+
 ```
 #Determine model parameters
 x_length = 1
@@ -282,6 +285,22 @@ model2.fit(x_train2, y_train2, epochs=epochs, batch_size=batch_size, verbose=2)
 
 ### Neural Networks: Predictions
 
+You may have noticed that I set the prediction size to 1. How do we have the neural networks predict a reasonably long signal with just size 1?
+
+Let's say we take the last "n_window" samples from the signal and make a prediction of size 1 after that. Then we can simply add that prediction to the input move the window forward one sample in time.
+
+This is how I make predictions with the LSTM neural network off the signal.
+
+To see how the prediction process is specifically deployed please see the repo.
+
+**Let's see how the predictions look!**
+
 ![pred1](pred_damped_oscillator.png)
 
 ![pred2](pred_rlc.png)
+
+## What Next?
+
+**Nonlinear Dynamics**
+
+**Signal Processing**
