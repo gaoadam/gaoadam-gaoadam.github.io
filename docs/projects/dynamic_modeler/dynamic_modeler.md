@@ -308,4 +308,12 @@ Below we have plots of the generated signals (training data), the neural network
 
 **Nonlinear Dynamics**
 
+So far we've simulated and predicted some reasonably simple linear phenomena. Everything that occured in the signals was easily explanable, and was more or less picked up by the neural network, albeit not perfectly.
+
+But the dynamic modeler engine can simulate much more complex nonlinear phenomena provided they fit into the same dynamical format. Perhaps this may include coupled oscillators or nonlinear circuit voltages.
+
 **Signal Processing**
+
+It's often the case that a bit of preprocessing buys machine learning a lot of accuracy.
+
+Given that there is often phenomena happening at different frequencies, I may try band-pass filtering the signal into multiple signals, feed the signals into multiple neural networks, and add the predictions back together.
