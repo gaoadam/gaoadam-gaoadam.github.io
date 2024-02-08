@@ -287,17 +287,22 @@ model2.fit(x_train2, y_train2, epochs=epochs, batch_size=batch_size, verbose=2)
 
 You may have noticed that I set the prediction size to 1. How do we have the neural networks predict a reasonably long signal with just size 1?
 
-Let's say we take the last "n_window" samples from the signal and make a prediction of size 1 after that. Then we can simply add that prediction to the input move the window forward one sample in time.
+Let's say we take the last "n_window" samples from the signal and make a prediction of size 1 after that. Then we can simply add that prediction to the input move the window forward one sample in time. Do this repeatedly until you're happy with the length of the predicted signal.
 
 This is how I make predictions with the LSTM neural network off the signal.
 
 To see how the prediction process is specifically deployed please see the repo.
 
 **Let's see how the predictions look!**
+Below we have plots of the generated signals (training data), the neural networks predictions on how the signal will evolve, and how the signal actually evolves.
 
 ![pred1](pred_damped_oscillator.png)
 
+*Above we have the damped oscillator. The prediction seems to be capturing the highest frequency perfectly, but is a bit off in amplitude for the lower frequency oscillation. This may be because the damping effect adds some nuance that the neural network has a bit of difficulty with.*
+
 ![pred2](pred_rlc.png)
+
+*Above we have an RLC circuit. Actually, once the signal stabilizes there's really not much nuance: just one single oscillation. As expected, the neural network predicts the voltage perfectly.*
 
 ## What Next?
 
