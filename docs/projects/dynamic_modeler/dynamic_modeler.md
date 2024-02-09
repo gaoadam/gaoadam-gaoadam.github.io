@@ -298,7 +298,7 @@ Below we have plots of the generated signals (training data), the neural network
 
 ![pred1](pred_damped_oscillator.png)
 
-*Above we have the damped oscillator. The prediction seems to be capturing the highest frequency perfectly, but is a bit off in amplitude for the lower frequency oscillation. This may be because the damping effect adds some nuance that the neural network has a bit of difficulty with.*
+*Above we have the damped oscillator. The prediction seems to be capturing the damping phenomena, driving frequency, and spring force frequency well.
 
 ![pred2](pred_rlc.png)
 
