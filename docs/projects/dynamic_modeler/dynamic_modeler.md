@@ -219,7 +219,7 @@ First I split the signals into training and test data. The test data comes after
 
 After I format the "training" part of the signals, all that's left to do is to create neural networks that learn off the training data.
 
-This is relatively simple in Keras (in the TensorFlow platform). I create a neural network with one LSTM layer and optimize it using mean squared error. Each model is trained on the signal through 20 epochs.
+This is relatively simple in Keras (in the TensorFlow platform). I create a neural network with one LSTM layer and optimize it using mean squared error. Each model is trained through the entire training section of the signal once, using the overlapping window method.
 
 **Code:**
 ***Note that these are just illustrative snippets of code. For entire context see repo.***
