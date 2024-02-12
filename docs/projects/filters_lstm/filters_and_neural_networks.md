@@ -6,7 +6,7 @@ usemathjax: true
 ---
 
 # Filters, Signals, and Neural Networks
-*insert rainbow here*
+![microphone](microphone.jpg)
 
 ## Introduction
 
@@ -20,9 +20,49 @@ This sort of approach is common in atmospheric research as well. For example, di
 
 So, how might we assist a neural network's prediction capability with these kinds of methods?
 
+My idea is quite simple.
+
+**In summary:**
+
+I take a signal and split it into multiple signals using filters. I train a neural network for each filtered signal.
+
+Then, I make a prediction from each neural network and add the predictions back together.
+
+In this project I will be using a low pass filter and a high pass filter.
+
+![filterdiagram](filterdiagram.png)
+
 ## Filters and Training
 
 Let's try taking a signal and separating it into two different frequency bands.
 
+I played around with the pararameters with my damped driven oscillator simulation until I was able to get two distinct bands of frequencies in my signal.
+
+The damping effect is also negligible so we can simply call the signal a "driven oscillator". Ultimately, we start with a **raw signal**:
+
+![raw_plot](raw_plot.png)
+
+Next, we set our **filters**.
+
+I elect to split the signal into two signals: I apply a lowpass filter on the original signal to get a "lowpassed signal", and similar a highpass filter to get a "highpassed signal".
+
+
+**Filtered Signals**
+
+![raw_plot_lp](raw_plot_lp.png)
+*The signal after being lowpass filtered forwards and backwards (to eliminate phase lag). The order # refers to the effective lowpass filter order, which is twice the original (since the filter is applied twice).*
+
+![raw_plot_hp](raw_plot_hp.png)
+*The signal after being highpass filtered forwards and backwards*
+
+As you can see, we have quite distinctly separated the signals' frequencies. The lowpassed signal has clear oscillations that are slower than the ones in the highpassed signal.
+
+**Training Neural Networks**
+
+Finally
+
 
 ## Neural Network Performance
+
+## Next Steps
+![filterdiagram2](filterdiagram2.png)
