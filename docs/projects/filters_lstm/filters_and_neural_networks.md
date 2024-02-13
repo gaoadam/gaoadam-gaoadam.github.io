@@ -59,10 +59,54 @@ As you can see, we have quite distinctly separated the signals' frequencies. The
 
 **Training Neural Networks**
 
-Finally
+See the repo for actual code.
 
+Like my [dynamic modeler project](https://gaoadam.github.io/docs/projects/dynamic_modeler/dynamic_modeler.html), I use a sort of windowing method to separate the data into neural network inputs and outputs (i.e. labels).
+
+Each “input” window from “n” to “n + n_window” gets a subsequent “output” label from "n + n_window" to "n + n_window + n_predict".
+
+![training_data_diagram](training_data_diagram.png)
+
+I apply this process to each filtered signal and feed those filtered signals into the neural networks.
 
 ## Neural Network Performance
+
+Time to see how effective filtering can be!
+
+
+
+First we look at the predictions from neural network for the  **lowpassed signal**
+
+![pred_lp_epoch1](pred_lp_epoch1.png)
+![pred_lp_epoch2](pred_lp_epoch2.png)
+
+Then we look at the predictions from neural network for the  **highpassed signal**
+
+![pred_hp_epoch1](pred_hp_epoch1.png)
+![pred_hp_epoch2](pred_hp_epoch2.png)
+
+Finally, let's look at the performance of the **filter based predictions added together**:
+
+![pred_filtered_epoch1](pred_filtered_epoch1.png)
+![pred_filtered_epoch2](pred_filtered_epoch2.png)
+
+Let's compare this to a **baseline prediction**, which is made from a neural network I trained on the raw unfiltered signal itself.
+
+![pred_raw_epoch1](pred_raw_epoch1.png)
+![pred_raw_epoch2](pred_raw_epoch2.png)
+
+Since it's not super clear which process performed better, we can compare the mean squared error between the prediction and actual future signal, ie **MSE**:
+
+MSE Raw 1 Epochs: 0.3650
+MSE Raw 2 Epochs: 0.4110
+MSE LP Filtered: 1 Epochs: 0.3530
+MSE LP Filtered: 2 Epochs: 0.3296
+MSE HP Filtered: 1 Epochs: 0.1232
+MSE HP Filtered: 2 Epochs: 0.1230
+MSE Filtered: 1 Epochs: 0.3473
+MSE Filtered: 2 Epochs: 0.3265
+
+
 
 ## Next Steps
 ![filterdiagram2](filterdiagram2.png)

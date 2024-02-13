@@ -181,7 +181,7 @@ In any case, an Long Short-Term Memory (LSTM) Neural Network is often used to pr
 
 A neural network can't just be fed some raw signal. It must get proper inputs and outputs.
 
-Like my  [wave simulation prediction project](https://gaoadam.github.io/docs/projects/wave_simulation_predictions/wave-simulation_predictions.html), I use a sort of windowing method to separate the data into neural network inputs and outputs (i.e. labels).
+Like my [wave simulation prediction project](https://gaoadam.github.io/docs/projects/wave_simulation_predictions/wave-simulation_predictions.html), I use a sort of windowing method to separate the data into neural network inputs and outputs (i.e. labels).
 
 Each “input” window from “n” to “n + n_window” gets a subsequent “output” label from "n + n_window" to "n + n_window + n_predict".
 
