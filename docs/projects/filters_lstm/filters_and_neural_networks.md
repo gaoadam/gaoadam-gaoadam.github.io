@@ -69,6 +69,8 @@ Each “input” window from “n” to “n + n_window” gets a subsequent “
 
 I apply this process to each filtered signal and feed those filtered signals into the neural networks.
 
+Furthermore I train the neural networks using a very small learning rate of $10^{-10}$ so that performance can be compared meaningfully.
+
 ## Neural Network Performance
 
 Time to see how effective filtering can be!
@@ -80,33 +82,54 @@ First we look at the predictions from neural network for the  **lowpassed signal
 ![pred_lp_epoch1](pred_lp_epoch1.png)
 ![pred_lp_epoch2](pred_lp_epoch2.png)
 
+*Looks like the lowpass neural network is converging to an accurate prediction.*
+
 Then we look at the predictions from neural network for the  **highpassed signal**
 
 ![pred_hp_epoch1](pred_hp_epoch1.png)
 ![pred_hp_epoch2](pred_hp_epoch2.png)
+
+*Looks like the highpass neural network converges to an accurate prediction very quickly as well.*
 
 Finally, let's look at the performance of the **filter based predictions added together**:
 
 ![pred_filtered_epoch1](pred_filtered_epoch1.png)
 ![pred_filtered_epoch2](pred_filtered_epoch2.png)
 
+*The filtered predictions added together seem to converge to an accurate prediction.*
+
 Let's compare this to a **baseline prediction**, which is made from a neural network I trained on the raw unfiltered signal itself.
 
 ![pred_raw_epoch1](pred_raw_epoch1.png)
 ![pred_raw_epoch2](pred_raw_epoch2.png)
 
-Since it's not super clear which process performed better, we can compare the mean squared error between the prediction and actual future signal, ie **MSE**:
 
-MSE Raw 1 Epochs: 0.3650
-MSE Raw 2 Epochs: 0.4110
-MSE LP Filtered: 1 Epochs: 0.3530
-MSE LP Filtered: 2 Epochs: 0.3296
-MSE HP Filtered: 1 Epochs: 0.1232
-MSE HP Filtered: 2 Epochs: 0.1230
-MSE Filtered: 1 Epochs: 0.3473
-MSE Filtered: 2 Epochs: 0.3265
+*The raw prediction from the baseline neural network is decent, but seems to neglect high frequency phenomena.*
 
+**Takeaway**:
 
+A normal LSTM neural network may be limited in it's ability to capture higher frequency phenomena given a set number of layers. This may be solved through conventional methods like tuning the neural network parameters like depth.
 
-## Next Steps
+However, a simpler solution may involve the use of filters.
+
+## Thoughts and Next Steps
+
+**Proper Performance Evaluation and Batch Processes**
+
+My evaluation was qualitative in nature, to showcase the nature of filters in a simple project.
+
+In the future, I may formalize this into a more "production-ready" process which tracks training performance over time.
+
+Furthermore, you may notice that **I did not track training performance, i.e. loss per epoch.**
+
+In my current process, each epoch is essentially treated as "one batch" of all the labeled windows in the signal. This means **a single epoch is extremely large, and therefore loss per epoch rather meaningless**.
+
+In the future, I may formalize a process to make each window a proper "batch", such that batches can be shuffled, and that loss per epoch becomes more meaningful.
+
+**Many Filters**
+
+Two filters is not always going to be sufficient in the real world. It would be interesting to see if the filtering process could be generalized to more complex situations.
+
+What about a flexible framework that allows the user to split the signal with as many filters as they want? (For example, one may elect fora lowpass filter, a highpass filter, and $N$ number of bandpass filters.)
+
 ![filterdiagram2](filterdiagram2.png)
