@@ -42,6 +42,10 @@ The damping effect is also negligible so we can simply call the signal a "driven
 
 ![raw_plot](raw_plot.png)
 
+Just for fun, we can also examine the raw position plotted against velocity in a **phase portrait**:
+
+![driven_phaseportrai](driven_phaseportrait.png)
+
 Next, we set our **filters**.
 
 I elect to split the signal into two signals: I apply a lowpass filter on the original signal to get a "lowpassed signal", and similar a highpass filter to get a "highpassed signal".
@@ -133,3 +137,7 @@ Two filters is not always going to be sufficient in the real world. It would be 
 What about a flexible framework that allows the user to split the signal with as many filters as they want? (For example, one may elect fora lowpass filter, a highpass filter, and $N$ number of bandpass filters.)
 
 ![filterdiagram2](filterdiagram2.png)
+
+**Multivariate Neural Networks**
+
+Finally, you may recall that in addition to the position, we also know the velocity of the oscillator. Given that there is a relationship between velocity and position, having a neural network train on both variable and predict both of them could lead to better performance.

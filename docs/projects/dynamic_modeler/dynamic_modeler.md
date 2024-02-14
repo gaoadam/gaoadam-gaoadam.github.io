@@ -1,16 +1,24 @@
 # Dynamical Systems, Neural Networks, and TensorFlow
 
+![birds_splash](birds_splash.jpg)
+
+*Photo Credit: Mehdi Sepehri*
+*Animal populations can be described equations, but not easily predicted by any single formula*
+
 See [GitHub repo](https://github.com/gaoadam/dynamicmodel) for source code of the signal modeling process and neural network training.
+
+
 
 ## Introduction
 
-You ever watch a high finance show and a big shot starts making hammy, Darwinian analogies comparing Wall Street to the jungle? 
 
-Systems in nature, finance, and engineering can all evolve over time in interesting ways. Such systems are called **dynamical systems**. They can also be quite complex and  unpredictable, though in some cases they can be approximated to some sum of predictable patterns. 
+Systems in nature, finance, engineering, or anything really, tend to evolve over time. The big question is: can they be reasonably described by a rules-based system?
+
+Such systems are called **dynamical systems**. They can also be quite complex and  unpredictable, though in some cases they can be approximated to some sum of predictable patterns. 
 
 Neural networks are able to pick up both simple and complex phenomena while using reasonably generalized training methods, provided they are tuned with some level of expertise.
 
-In this project I build a simulation library for generating signals from dynamical systems, and then predict them using LSTM (Long short term memory) neural networks in TensorFlow.
+I decided to build a simulation library for generating signals from dynamical systems, and then predict them using LSTM (Long short term memory) neural networks in TensorFlow.
 
 ## Dynamical Systems: How do things change?
 
@@ -80,6 +88,10 @@ Furthermore I set the initial conditions and constant values as follows:
 Plugging this into my engine we get the following signal:
 
 ![damped_oscillator](damped_oscillator.png)
+
+If we plot velocity against position, we can get a more geometric representaion in "phase space":
+
+![damped_phase_portrait](damped_phase_portrait.png)
 
 ## How to Use the Engine
 

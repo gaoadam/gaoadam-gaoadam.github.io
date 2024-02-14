@@ -4,6 +4,9 @@ title: Predicting a Wave Simulation using Neural Networks
 parent: Projects
 usemathjax: true
 ---
+
+# Predicting a Wave Simulation using Neural Networks
+
 ![Photo Credit: Me, Adam Gao](PXL_20221001_210647983-EDIT.jpg)
 *photo taken by me ... of weather*
 *(Golden Gate Canyon State Park, CO)*
