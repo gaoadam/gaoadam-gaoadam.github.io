@@ -3,7 +3,7 @@
 ![birds_splash](birds_splash.jpg)
 
 *Photo Credit: Mehdi Sepehri*
-*Animal populations can be described equations, but not easily predicted by any single formula*
+*Animal populations can often be described by equations, but not easily predicted by any single formula*
 
 See [GitHub repo](https://github.com/gaoadam/dynamicmodel) for source code of the signal modeling process and neural network training.
 
@@ -18,7 +18,7 @@ Such systems are called **dynamical systems**. They can also be quite complex an
 
 Neural networks are able to pick up both simple and complex phenomena while using reasonably generalized training methods, provided they are tuned with some level of expertise.
 
-I decided to build a simulation library for generating signals from dynamical systems, and then predict them using LSTM (Long short term memory) neural networks in TensorFlow.
+I decided to build a simulation library for generating signals from dynamical systems, and then predict them using LSTM (long short-term memory) neural networks in TensorFlow.
 
 ## Dynamical Systems: How do things change?
 
@@ -40,7 +40,7 @@ Behold, the damped driven oscillator:
 
 Consider an object with mass m attached to a spring with "spring constant" k. There is also a friction constant b which damps the oscillation of the spring. Finally, there is also a driving force $F(t)$ pushing and pulling on the spring.
 
-Let's say someone pulls on the mass away from the spring's equilibrium and let's go, this would lead to a harmonic oscillation, in addition to the driving force.
+Let's say someone pulls on the mass away from the spring's equilibrium and lets go, this would lead to a harmonic oscillation, in addition to the driving force.
 
 You will find this situation often written in the following standard form:
 
@@ -97,9 +97,9 @@ If we plot velocity against position, we can get a more geometric representaion 
 
 Now that we've looked at an example, you may be wondering, **how do I use the engine to simulate my own nonlinear equation?**
 
-The engine revolves around one Python function that I call "iterate". All you need to do is pass the following items (i.e. arguments):
+The engine revolves around one Python function that I call "x_iterate". All you need to do is pass the following items (i.e. arguments):
 
-* The initial state vector (1 dimension), which contains the variables' values at initial time $t_0$. In the case of the damped oscillator, it would be a list of initial position $x_{t=0}$ and initial velocity $\dot{x}_{t=dt}$.
+* The initial state vector (1 dimension), which contains the variables' values at initial time $t_0$. In the case of the damped oscillator, it would contain initial position $x_{t=0}$ and initial velocity $\dot{x}_{t=dt}$.
 * The value of the discrete time step $dt$, i.e. the time of each frame.
 * Number of time steps or frames $N$ for which the simulation takes place
 * A list of functions that take calculate the state vector $x$'s time derivatives for each variable. For the damped oscillator this would be calculating $\dot{x}$ and $\ddot{x}$.
@@ -187,7 +187,7 @@ Do linear systems in general have clearly discenrable patterns? I think so.
 
 Do complex nonlinear systems have clearly discernable patterns? Sometimes. But that's another problem for another day.
 
-In any case, an Long Short-Term Memory (LSTM) Neural Network is often used to predict time series. **I train an LSTM Neural Network off the dynamical simulation signals and test it's ability to predict the rest of the signal.**
+In any case, a Long Short-Term Memory (LSTM) Neural Network is often used to predict time series. **I train an LSTM Neural Network off the dynamical simulation signals and test it's ability to predict the rest of the signal.**
 
 ### Neural Networks: Training Data
 
@@ -299,7 +299,7 @@ model2.fit(x_train2, y_train2, epochs=epochs, batch_size=batch_size, verbose=2)
 
 You may have noticed that I set the prediction size to 1. How do we have the neural networks predict a reasonably long signal with just size 1?
 
-Let's say we take the last "n_window" samples from the signal and make a prediction of size 1 after that. Then we can simply add that prediction to the input move the window forward one sample in time. Do this repeatedly until you're happy with the length of the predicted signal.
+Let's say we take the last "n_window" samples from the signal and make a prediction of size 1 after that. Then we can simply add that prediction to the input and move the window forward one sample in time. Do this repeatedly until you're happy with the length of the predicted signal.
 
 This is how I make predictions with the LSTM neural network off the signal.
 
@@ -310,7 +310,7 @@ Below we have plots of the generated signals (training data), the neural network
 
 ![pred1](pred_damped_oscillator.png)
 
-*Above we have the damped oscillator. The prediction seems to be capturing the damping phenomena, driving frequency, and spring force frequency well.
+*Above we have the damped oscillator. The prediction seems to be capturing the damping phenomena, driving frequency, and spring force frequency well.*
 
 ![pred2](pred_rlc.png)
 
