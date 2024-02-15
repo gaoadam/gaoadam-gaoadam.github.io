@@ -4,6 +4,9 @@ title: Predicting a Wave Simulation using Neural Networks
 parent: Projects
 usemathjax: true
 ---
+
+# Predicting a Wave Simulation using Neural Networks
+
 ![Photo Credit: Me, Adam Gao](PXL_20221001_210647983-EDIT.jpg)
 *photo taken by me ... of weather*
 *(Golden Gate Canyon State Park, CO)*
@@ -63,7 +66,7 @@ An LSTM model needs to train on an input and an output i.e. "label", not just so
 
 I apply overlapping windows throughout the signal to generate inputs and outputs.
 
-In principle, each "input" window from "n" to "n + n_window" can a subsequent "output" label from "n + n_window + 1" to "n + n_window + n_predict".
+In principle, each "input" window from "n" to "n + n_window" can get a subsequent "output" label from "n + n_window + 1" to "n + n_window + n_predict".
 
 ![Training Data](training_data_diagram.png)
 
