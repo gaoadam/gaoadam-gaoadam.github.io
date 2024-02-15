@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Filters, Signals, and Neural Networks
+title: Filters and Neural Networks
 parent: Projects
 usemathjax: true
 ---
 
-# Filters, Signals, and Neural Networks
+# Filters and Neural Networks
 ![microphone](microphone.jpg)
 
 ## Introduction

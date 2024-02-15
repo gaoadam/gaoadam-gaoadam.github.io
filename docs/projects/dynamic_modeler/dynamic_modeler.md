@@ -1,3 +1,11 @@
+---
+layout: default
+title: Dynamical Systems, Neural Networks, and TensorFlow
+parent: Projects
+usemathjax: true
+---
+
+
 # Dynamical Systems, Neural Networks, and TensorFlow
 
 ![birds_splash](birds_splash.jpg)
@@ -10,7 +18,6 @@ See [GitHub repo](https://github.com/gaoadam/dynamicmodel) for source code of th
 
 
 ## Introduction
-
 
 Systems in nature, finance, engineering, or anything really, tend to evolve over time. The big question is: can they be reasonably described by a rules-based system?
 
