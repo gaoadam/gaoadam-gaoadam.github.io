@@ -23,9 +23,9 @@ layout: home
   </h1>
   </div>
 
-<h2>Site Under Construction</h2>
+<h2>Welcome!</h2>
   
-  Welcome! This website is my project portfolio. My projects mainly consist of signal processing.
+  This website is my project portfolio. My projects mainly consist of signal processing.
   
   My music can be found on my <a href="https://adamgao.bandcamp.com">bandcamp</a>. My <a href="https://www.youtube.com/@adamgaosignals">youtube channel</a> mainly consists of physics simulations and finished songs.
 </body>
