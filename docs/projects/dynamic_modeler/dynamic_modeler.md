@@ -179,6 +179,8 @@ In this RLC circuit simulation we have:
 * The resistor's resistance $$R$$ (defined to be 1 in this simulation)
 * The voltage $$V(t)$$ from the battery in the circuit, ($$\sin(2\pi t)$$ in this simulation)
 
+The system equations are as follows:
+
 $$
 \dot{V}_C = \dfrac{I_L}{C}
 $$
