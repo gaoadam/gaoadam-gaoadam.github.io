@@ -181,6 +181,7 @@ In this RLC circuit simulation we have:
 $$
 \dot{V}_C = \dfrac{I_L}{C}
 $$
+
 $$
 \dot{I}_L = \dfrac{1}{L}(-V_C - RI_L + V(t))
 $$
