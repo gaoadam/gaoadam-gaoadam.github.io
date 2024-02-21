@@ -54,9 +54,11 @@ I elect to split the signal into two signals: I apply a lowpass filter on the or
 **Filtered Signals**
 
 ![raw_plot_lp](raw_plot_lp.png)
+
 *The signal after being lowpass filtered forwards and backwards (to eliminate phase lag). The order # refers to the effective lowpass filter order, which is twice the original (since the filter is applied twice).*
 
 ![raw_plot_hp](raw_plot_hp.png)
+
 *The signal after being highpass filtered forwards and backwards*
 
 As you can see, we have separated the signal into distinct frequencies. The lowpassed signal has clear oscillations that are slower than the ones in the highpassed signal.
