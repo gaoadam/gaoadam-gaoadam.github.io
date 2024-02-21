@@ -44,7 +44,7 @@ The damping effect is also negligible so we can simply call the signal a "driven
 
 Just for fun, we can also examine the raw position plotted against velocity in a **phase portrait**:
 
-![driven_phaseportrai](driven_phaseportrait.png)
+![driven_phaseportrait](driven_phaseportrait.png)
 
 Next, we set our **filters**.
 
