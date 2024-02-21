@@ -172,10 +172,10 @@ x_array_dampeddriven = dm.x_driven(x_t0=x_t0, dt=dt, N=N, m=1, b=0.1, k=1, u1=dm
 ```
 **I also used my engine to simulate an RLC circuit, check out the repo to see more!**
 In this RLC circuit simulation we have:
-* The capacitor voltage $V_C$ with initial value at $t=0$
-* The inductor current $I_L$ with initial value at $t=0$
-* The capacitor's capacitance $C$ (defined to be 1 in this simulation)
-* The resistor's resistance $R$ (defined to be 1 in this simulation)
+* The capacitor voltage $$V_C$$ with initial value at $$t=0$$
+* The inductor current $$I_L$$ with initial value at $$t=0$$
+* The capacitor's capacitance $$C$$ (defined to be 1 in this simulation)
+* The resistor's resistance $$R$$ (defined to be 1 in this simulation)
 * The voltage $$V(t)$$ from the battery in the circuit, ($$\sin(2\pi t)$$ in this simulation)
 
 $$
@@ -207,9 +207,11 @@ Each “input” window from “n” to “n + n_window” gets a subsequent “
 ![training_data_diagram](training_data_diagram.png)
 
 **Code**
+
 Here I define a function to format signals into training data:
 
-```#Split data into multiple signals (inputs and labels) using a rolling window
+```
+#Split data into multiple signals (inputs and labels) using a rolling window
 def create_dataset(data, n_window, n_predict):
     #initialize data lists
     data_x = []
@@ -313,6 +315,7 @@ This is how I make predictions with the LSTM neural network off the signal.
 To see how the prediction process is specifically deployed please see the repo.
 
 **Let's see how the predictions look!**
+
 Below we have plots of the generated signals (training data), the neural networks predictions on how the signal will evolve, and how the signal actually evolves.
 
 ![pred1](pred_damped_oscillator.png)
