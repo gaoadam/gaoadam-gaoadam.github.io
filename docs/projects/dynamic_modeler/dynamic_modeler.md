@@ -45,7 +45,7 @@ $$\dot{x}_1 = f(x_1,x_2, ... x_M)\\
 
 Behold, the damped driven oscillator:
 
-Consider an object with mass m attached to a spring with "spring constant" k. There is also a friction constant b which damps the oscillation of the spring. Finally, there is also a driving force $F(t)$ pushing and pulling on the spring.
+Consider an object with mass m attached to a spring with "spring constant" k. There is also a friction constant b which damps the oscillation of the spring. Finally, there is also a driving force $$F(t)$$ pushing and pulling on the spring.
 
 Let's say someone pulls on the mass away from the spring's equilibrium and lets go, this would lead to a harmonic oscillation, in addition to the driving force.
 
@@ -57,7 +57,7 @@ However, we need time derivatives as explicit functions. So we rewrite the above
 
 $$\ddot{x} = \dfrac{1}{m}(F(t) - b\dot{x} - kx)$$
 
-If we define the mass's position $x_1 \coloneqq x$ and the mass's velocity $x_2 \coloneqq \dot{x}$, then we essentially have the variables' time derivatives expressed as functions in the previously mentioned general form:
+If we define the mass's position $$x_1 \coloneqq x$$ and the mass's velocity $$x_2 \coloneqq \dot{x}$$, then we essentially have the variables' time derivatives expressed as functions in the previously mentioned general form:
 
 $$
 \dot{x}_1 = x_2\\
@@ -66,11 +66,11 @@ $$
 
 **How does my simulation engine put these equations into practice?**
 
-We first inform the engine initial conditions at time $t=0$. This includes the mass's initial velocity $\dot{x}_{t=0}$ and initial position $x_{t=0}$. In addition to knowing the driving force at all times, this allows us to calculate the initial acceleration:
+We first inform the engine initial conditions at time $$t=0$$. This includes the mass's initial velocity $$\dot{x}_{t=0}$$ and initial position $$x_{t=0}$$. In addition to knowing the driving force at all times, this allows us to calculate the initial acceleration:
 
-$\ddot{x}_{t=0} = \dfrac{1}{m}(F(t=0) - b\dot{x}_{t=0} - kx_{t=0})$
+$$\ddot{x}_{t=0} = \dfrac{1}{m}(F(t=0) - b\dot{x}_{t=0} - kx_{t=0})$$
 
-Then, given a discrete time step size $dt$, use $\ddot{x}_0$ to calculate the velocity at the next time step:
+Then, given a discrete time step size $dt$, use $$\ddot{x}_0$$ to calculate the velocity at the next time step:
 
 $$\dot{x}_{t=dt} = \ddot{x}_{t=0}dt$$
 
@@ -86,11 +86,11 @@ $$F(t) = \sin(2\pi t)$$
 
 Furthermore I set the initial conditions and constant values as follows:
 
-* mass $m = 1$
-* friction constant $b = 0.1$
-* spring constant $k = 0.1$
-* initial position $x_{t=0} = 0$
-* initial velocity $\dot{x}_{t=dt} = 0.5$
+* mass $$m = 1$$
+* friction constant $$b = 0.1$$
+* spring constant $$k = 0.1$$
+* initial position $$x_{t=0} = 0$$
+* initial velocity $$\dot{x}_{t=dt} = 0.5$$
 
 Plugging this into my engine we get the following signal:
 
@@ -106,10 +106,10 @@ Now that we've looked at an example, you may be wondering, **how do I use the en
 
 The engine revolves around one Python function that I call "x_iterate". All you need to do is pass the following items (i.e. arguments):
 
-* The initial state vector (1 dimension), which contains the variables' values at initial time $t_0$. In the case of the damped oscillator, it would contain initial position $x_{t=0}$ and initial velocity $\dot{x}_{t=dt}$.
+* The initial state vector (1 dimension), which contains the variables' values at initial time $$t_0$$. In the case of the damped oscillator, it would contain initial position $$x_{t=0}$$ and initial velocity $$\dot{x}_{t=dt}$$.
 * The value of the discrete time step $dt$, i.e. the time of each frame.
 * Number of time steps or frames $N$ for which the simulation takes place
-* A list of functions that take calculate the state vector $x$'s time derivatives for each variable. For the damped oscillator this would be calculating $\dot{x}$ and $\ddot{x}$.
+* A list of functions that take calculate the state vector $x$'s time derivatives for each variable. For the damped oscillator this would be calculating $$\dot{x}$$ and $$\ddot{x}$$.
 * A dictionary of custom arguments used (if needed) for the functions
 
 **How did I use this for my damped oscillator?**
@@ -176,7 +176,7 @@ In this RLC circuit simulation we have:
 * The inductor current $I_L$ with initial value at $t=0$
 * The capacitor's capacitance $C$ (defined to be 1 in this simulation)
 * The resistor's resistance $R$ (defined to be 1 in this simulation)
-* The voltage $V(t)$ from the battery in the circuit, ($\sin(2\pi t)$ in this simulation)
+* The voltage $$V(t)$$ from the battery in the circuit, ($$\sin(2\pi t)$$ in this simulation)
 
 $$
 \dot{V}_C = \dfrac{I_L}{C}

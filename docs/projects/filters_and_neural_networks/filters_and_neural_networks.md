@@ -75,7 +75,7 @@ Each “input” window from “n” to “n + n_window” gets a subsequent “
 
 I apply this process to each filtered signal and feed those filtered signals into the neural networks.
 
-Furthermore I train the neural networks using a very small learning rate of $10^{-10}$ so that performance can be compared meaningfully.
+Furthermore I train the neural networks using a very small learning rate of $$10^{-10}$$ so that performance can be compared meaningfully.
 
 ## Neural Network Performance
 
