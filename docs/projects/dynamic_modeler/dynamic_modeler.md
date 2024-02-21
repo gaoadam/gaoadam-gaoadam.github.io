@@ -31,7 +31,7 @@ I decided to build a simulation library for generating signals from dynamical sy
 
 I'm going to go into a bit more detail on systems changing over time, using some math. If this is confusing, feel free to skip to the section on my applications of neural networks.
 
-Let's say a system has $M$ variables $x_1, x_2, ...x_M$. (I avoid using the letter $N$ as it denotes the number of time steps in my module.)
+Let's say a system has $$M$$ variables $$x_1, x_2, ...x_M$$. (I avoid using the letter $$N$$ as it denotes the number of time steps in my module.)
 
 We can consider this a dynamical system if the variables' time derivatives depend on the variables in question:
 
