@@ -107,9 +107,9 @@ Now that we've looked at an example, you may be wondering, **how do I use the en
 The engine revolves around one Python function that I call "x_iterate". All you need to do is pass the following items (i.e. arguments):
 
 * The initial state vector (1 dimension), which contains the variables' values at initial time $$t_0$$. In the case of the damped oscillator, it would contain initial position $$x_{t=0}$$ and initial velocity $$\dot{x}_{t=dt}$$.
-* The value of the discrete time step $dt$, i.e. the time of each frame.
-* Number of time steps or frames $N$ for which the simulation takes place
-* A list of functions that take calculate the state vector $x$'s time derivatives for each variable. For the damped oscillator this would be calculating $$\dot{x}$$ and $$\ddot{x}$$.
+* The value of the discrete time step $$dt$$, i.e. the time of each frame.
+* Number of time steps or frames $$N$$ for which the simulation takes place
+* A list of functions that take calculate the state vector $$x$$'s time derivatives for each variable. For the damped oscillator this would be calculating $$\dot{x}$$ and $$\ddot{x}$$.
 * A dictionary of custom arguments used (if needed) for the functions
 
 **How did I use this for my damped oscillator?**
