@@ -171,6 +171,7 @@ x_t0 = np.array([0,0.05])
 x_array_dampeddriven = dm.x_driven(x_t0=x_t0, dt=dt, N=N, m=1, b=0.1, k=1, u1=dm.harmonics, args={'n_list':[1], 'a_list':[1]})
 ```
 **I also used my engine to simulate an RLC circuit, check out the repo to see more!**
+
 In this RLC circuit simulation we have:
 * The capacitor voltage $$V_C$$ with initial value at $$t=0$$
 * The inductor current $$I_L$$ with initial value at $$t=0$$
@@ -185,6 +186,7 @@ $$
 $$
 \dot{I}_L = \dfrac{1}{L}(-V_C - RI_L + V(t))
 $$
+
 ![rlc](rlc.png)
 
 ## Neural Networks
