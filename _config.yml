@@ -10,6 +10,8 @@ math: katex
 
 # Aux links for the upper right navigation
 aux_links:
+  "Email":
+    - "mailto:hello.adam.gao@gmail.com"
   "Github":
     - "https://github.com/gaoadam/"
   "Linkedin":
