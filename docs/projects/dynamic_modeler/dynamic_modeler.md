@@ -11,6 +11,7 @@ usemathjax: true
 ![birds_splash](birds_splash.jpg)
 
 *Photo Credit: Mehdi Sepehri*
+
 *Animal populations can often be described by equations, but not easily predicted by any single formula*
 
 See [GitHub repo](https://github.com/gaoadam/dynamicmodel) for source code of the signal modeling process and neural network training.
